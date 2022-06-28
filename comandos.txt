@@ -1,0 +1,25 @@
+# mac_changer.py
+sudo python3 mac_changer.py --interface eth0 --mac 00:11:22:33:44:99
+
+# network_scanner.py
+sudo python3 network_scanner.py
+
+# arp_spoofer.py
+sudo -s
+echo 1 > /proc/sys/net/ipv4/ip_forward
+sudo python3 arp_spoofer.py
+
+# packet_sniffer.py
+sudo python3 packet_sniffer.py
+
+# dns_spoof.py
+sudo apt-get install build-essential python-dev-is-python3 libnetfilter-queue-dev
+    # maquina remota
+    iptables --flush
+    iptables -I FORWARD -j NFQUEUE --queue-num 0
+    # maquina local
+    iptables -I OUTPUT -j NFQUEUE --queue-num 0
+    iptables -I INPUT -j NFQUEUE --queue-num 0
+sudo python3 dns_spoof.py
+
+# replace_downloads.py
